@@ -15,7 +15,7 @@ namespace PackageHandlerApp
     private int id;
     public double weight {get; set;}
     private double value { get; set; }
-    public bool isInsuranceRequired()
+    public bool insuranceIsRequired()
     {
       return value > 1000;
     }
@@ -34,10 +34,11 @@ namespace PackageHandlerApp
       Console.WriteLine("Hello! Welcome to the our package handling app!");
       bool closeApp = false;
       List<Package> Packages = new List<Package>();
+      List<Package> HoldListForInsurance = new List<Package>();
 
       do
       {
-        Console.WriteLine("What would you like to do? You may choose, 'Add Package', 'Quit'");
+        Console.WriteLine("What would you like to do? You may choose, 'Add Package', 'Proccess Insurance Holds', 'Quit'");
         var selectedOption = Console.ReadLine();
 
         switch (selectedOption)
@@ -49,10 +50,25 @@ namespace PackageHandlerApp
             Console.WriteLine("Please enter a value...");
             var value = Convert.ToDouble(Console.ReadLine());
             var packageToAdd = new Package(id, weight, value);
-            Packages.Add(packageToAdd);
-            Console.WriteLine("Your package was added!");
+            if (packageToAdd.insuranceIsRequired())
+            {
+              HoldListForInsurance.Add(packageToAdd);
+              Console.WriteLine("Your package requires insurance and processing is momentarily suspended.");
+            }
+            else {
+              Packages.Add(packageToAdd);
+              Console.WriteLine("Your package was added!");
+            }
+            break;
+          case "Proccess Insurance Holds":
+            // Add logic to process from insurance and add to department
             break;
           case "Quit":
+            if (HoldListForInsurance.Count > 0)
+            {
+              Console.WriteLine("Please proccess your insurance holds before quitting!");
+              break;
+            }
             Console.WriteLine("Thanks for using our App! Have a nice day.");
             closeApp = true;
             break;
