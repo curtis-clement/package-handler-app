@@ -1,0 +1,15 @@
+/Users/curtis/Coding/C#/packaging-app/bin/Debug/net6.0/packaging-app
+/Users/curtis/Coding/C#/packaging-app/bin/Debug/net6.0/packaging-app.deps.json
+/Users/curtis/Coding/C#/packaging-app/bin/Debug/net6.0/packaging-app.runtimeconfig.json
+/Users/curtis/Coding/C#/packaging-app/bin/Debug/net6.0/packaging-app.dll
+/Users/curtis/Coding/C#/packaging-app/bin/Debug/net6.0/packaging-app.pdb
+/Users/curtis/Coding/C#/packaging-app/obj/Debug/net6.0/packaging-app.csproj.AssemblyReference.cache
+/Users/curtis/Coding/C#/packaging-app/obj/Debug/net6.0/packaging-app.GeneratedMSBuildEditorConfig.editorconfig
+/Users/curtis/Coding/C#/packaging-app/obj/Debug/net6.0/packaging-app.AssemblyInfoInputs.cache
+/Users/curtis/Coding/C#/packaging-app/obj/Debug/net6.0/packaging-app.AssemblyInfo.cs
+/Users/curtis/Coding/C#/packaging-app/obj/Debug/net6.0/packaging-app.csproj.CoreCompileInputs.cache
+/Users/curtis/Coding/C#/packaging-app/obj/Debug/net6.0/packaging-app.dll
+/Users/curtis/Coding/C#/packaging-app/obj/Debug/net6.0/refint/packaging-app.dll
+/Users/curtis/Coding/C#/packaging-app/obj/Debug/net6.0/packaging-app.pdb
+/Users/curtis/Coding/C#/packaging-app/obj/Debug/net6.0/packaging-app.genruntimeconfig.cache
+/Users/curtis/Coding/C#/packaging-app/obj/Debug/net6.0/ref/packaging-app.dll
