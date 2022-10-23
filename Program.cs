@@ -12,7 +12,7 @@ namespace PackageHandlerApp
       weight = Weight;
       value = Value;
     }
-    private int id;
+    public int id;
     public double weight {get; set;}
     private double value { get; set; }
     public bool insuranceIsRequired()
@@ -38,7 +38,8 @@ namespace PackageHandlerApp
 
       do
       {
-        Console.WriteLine("What would you like to do? You may choose, 'Add Package', 'Proccess Insurance Holds', 'Quit'");
+        var systemUser = "Curtis";
+        Console.WriteLine("What would you like to do? You may choose, 'Add Package', 'Process Insurance Holds', 'Quit'");
         var selectedOption = Console.ReadLine();
 
         switch (selectedOption)
@@ -60,8 +61,32 @@ namespace PackageHandlerApp
               Console.WriteLine("Your package was added!");
             }
             break;
-          case "Proccess Insurance Holds":
-            // Add logic to process from insurance and add to department
+          case "Process Insurance Holds":
+            List<Package> insuranceHoldsProcessed = new List<Package>();
+            foreach (Package item in HoldListForInsurance)
+            {
+              Console.WriteLine
+              (
+                $"Package with id: {item.id}, and weight: {item.weight} requires insurance. Please verify your user identity to confirm adding insurance."
+              );
+              string userNameInput = Console.ReadLine()!;
+              if (userNameInput == systemUser)
+              {
+                Packages.Add(item);
+                insuranceHoldsProcessed.Add(item);
+                Console.WriteLine("Package has been processed!");
+              }
+              else
+              {
+                Console.WriteLine("Sorry, that user name did not match!");
+                break;
+              }
+            }
+
+            foreach (Package item in insuranceHoldsProcessed)
+            {
+              HoldListForInsurance.Remove(item);
+            }
             break;
           case "Quit":
             if (HoldListForInsurance.Count > 0)
@@ -69,6 +94,7 @@ namespace PackageHandlerApp
               Console.WriteLine("Please proccess your insurance holds before quitting!");
               break;
             }
+            Console.WriteLine($"You processed {Packages.Count} today!");
             Console.WriteLine("Thanks for using our App! Have a nice day.");
             closeApp = true;
             break;
