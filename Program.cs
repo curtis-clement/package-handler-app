@@ -4,37 +4,40 @@ using System.Collections.Generic;
 
 namespace PackageHandlerApp 
 {
-  public class Package
-  {
-    public Package(int Id, double Weight, double Value)
-    {
-      id = Id;
-      weight = Weight;
-      value = Value;
-    }
-    public int id;
-    public double weight {get; set;}
-    private double value { get; set; }
-    public bool insuranceIsRequired()
-    {
-      return value > 1000;
-    }
-  }
+  // public class Package
+  // {
+  //   public Package(int Id, double Weight, double Value)
+  //   {
+  //     id = Id;
+  //     weight = Weight;
+  //     value = Value;
+  //   }
+  //   public int id;
+  //   public double weight {get; set;}
+  //   private double value { get; set; }
+  //   public bool insuranceIsRequired()
+  //   {
+  //     return value > 1000;
+  //   }
+  // }
 
-  public class Department
-  {
-    public string name = "";
-    public double maxHandledWeight { get; set; }
-    public double valueRequiredForInsurnace { get; set; }
-    
-  }
+  // public class Department
+  // {
+  //   public string name = "";
+  //   public double maxHandledWeight { get; set; }
+  //   public double valueRequiredForInsurnace { get; set; }
+  //   public List<Package> DepartmentPackages = new List<Package>();
+  //   public void addPackageToDepartment(Package package)
+  //   {
+  //     this.DepartmentPackages.Add(package);
+  //   }
+  // }
   class Program 
   {
     static void Main(string[] args)
     {
       Console.WriteLine("Hello! Welcome to the our package handling app!");
       bool closeApp = false;
-      List<Package> Packages = new List<Package>();
       List<Package> HoldListForInsurance = new List<Package>();
 
       List<Department> AvailableDepartments = new List<Department>()
@@ -53,11 +56,21 @@ namespace PackageHandlerApp
         },
         new Department()
         {
-          name = "Mail",
+          name = "Heavy",
           maxHandledWeight = double.PositiveInfinity,
           valueRequiredForInsurnace = 1000,
         },
       };
+
+      int totalPackageCount()
+      {
+        int totalPacakgeCount = 0;
+        foreach (Department department in AvailableDepartments)
+        {
+          totalPacakgeCount += department.DepartmentPackages.Count;
+        }
+        return totalPacakgeCount;
+      }
 
       do
       {
@@ -68,7 +81,7 @@ namespace PackageHandlerApp
         switch (selectedOption)
         {
           case "Add Package":
-            int id = Packages.Count;
+            int id = totalPackageCount();
             Console.WriteLine("Please enter a weight...");
             var weight = Convert.ToDouble(Console.ReadLine());
             Console.WriteLine("Please enter a value...");
@@ -80,8 +93,22 @@ namespace PackageHandlerApp
               Console.WriteLine("Your package requires insurance and processing is momentarily suspended.");
             }
             else {
-              Packages.Add(packageToAdd);
-              Console.WriteLine("Your package was added!");
+              if (packageToAdd.weight <= 1)
+              {
+                var mailDepartment = AvailableDepartments.Find(item => item.name == "Mail");
+                mailDepartment!.addPackageToDepartment(packageToAdd);
+                Console.WriteLine("Your package was added to the Mail department!");
+              } else if (packageToAdd.weight <= 10)
+              {
+                var regularDepartment = AvailableDepartments.Find(item => item.name == "Regular");
+                regularDepartment!.addPackageToDepartment(packageToAdd);
+                Console.WriteLine("Your package was added to the Regular department!");
+              } else
+              {
+                var heavyDepartment = AvailableDepartments.Find(item => item.name == "Heavy");
+                heavyDepartment!.addPackageToDepartment(packageToAdd);
+                Console.WriteLine("Your package was added to the Heavy department!");
+              }
             }
             break;
           case "Process Insurance Holds":
@@ -95,7 +122,22 @@ namespace PackageHandlerApp
               string userNameInput = Console.ReadLine()!;
               if (userNameInput == systemUser)
               {
-                Packages.Add(item);
+                if (item.weight <= 1)
+                {
+                  var mailDepartment = AvailableDepartments.Find(item => item.name == "Mail");
+                  mailDepartment!.addPackageToDepartment(item);
+                  Console.WriteLine("Your package was added to the Mail department!");
+                } else if (item.weight <= 10)
+                {
+                  var regularDepartment = AvailableDepartments.Find(item => item.name == "Regular");
+                  regularDepartment!.addPackageToDepartment(item);
+                  Console.WriteLine("Your package was added to the Regular department!");
+                } else
+                {
+                  var heavyDepartment = AvailableDepartments.Find(item => item.name == "Heavy");
+                  heavyDepartment!.addPackageToDepartment(item);
+                  Console.WriteLine("Your package was added to the Heavy department!");
+                }
                 insuranceHoldsProcessed.Add(item);
                 Console.WriteLine("Package has been processed!");
               }
@@ -117,21 +159,14 @@ namespace PackageHandlerApp
               Console.WriteLine("Please proccess your insurance holds before quitting!");
               break;
             }
-            Console.WriteLine($"You processed {Packages.Count} today!");
+
+            Console.WriteLine($"You processed {totalPackageCount()} packages today!");
             Console.WriteLine("Thanks for using our App! Have a nice day.");
             closeApp = true;
             break;
         }
       }
       while (!closeApp);
-
-      // Check each package for weight and then insurance, if value is under then pass to department, if over pass to insurance
-
-      // Loop through insurance to validate the insurance of each pending package (some sort of validation logic here?)
-
-      // Once all insurance cases are complete, verify the amount of packages going to each department
-
-      // Once verified, write the info for each package to a file and close the app
     }
   }
 }
