@@ -4,73 +4,15 @@ using System.Collections.Generic;
 
 namespace PackageHandlerApp 
 {
-  // public class Package
-  // {
-  //   public Package(int Id, double Weight, double Value)
-  //   {
-  //     id = Id;
-  //     weight = Weight;
-  //     value = Value;
-  //   }
-  //   public int id;
-  //   public double weight {get; set;}
-  //   private double value { get; set; }
-  //   public bool insuranceIsRequired()
-  //   {
-  //     return value > 1000;
-  //   }
-  // }
-
-  // public class Department
-  // {
-  //   public string name = "";
-  //   public double maxHandledWeight { get; set; }
-  //   public double valueRequiredForInsurnace { get; set; }
-  //   public List<Package> DepartmentPackages = new List<Package>();
-  //   public void addPackageToDepartment(Package package)
-  //   {
-  //     this.DepartmentPackages.Add(package);
-  //   }
-  // }
   class Program 
   {
     static void Main(string[] args)
     {
       Console.WriteLine("Hello! Welcome to the our package handling app!");
       bool closeApp = false;
+      var departmentService = new DepartmentService();
+      var AvailableDepartments = departmentService.AvailableDepartments;
       List<Package> HoldListForInsurance = new List<Package>();
-
-      List<Department> AvailableDepartments = new List<Department>()
-      {
-        new Department()
-        {
-          name = "Mail",
-          maxHandledWeight = 1,
-          valueRequiredForInsurnace = 1000,
-        },
-        new Department()
-        {
-          name = "Regular",
-          maxHandledWeight = 10,
-          valueRequiredForInsurnace = 1000,
-        },
-        new Department()
-        {
-          name = "Heavy",
-          maxHandledWeight = double.PositiveInfinity,
-          valueRequiredForInsurnace = 1000,
-        },
-      };
-
-      int totalPackageCount()
-      {
-        int totalPacakgeCount = 0;
-        foreach (Department department in AvailableDepartments)
-        {
-          totalPacakgeCount += department.DepartmentPackages.Count;
-        }
-        return totalPacakgeCount;
-      }
 
       do
       {
@@ -81,7 +23,7 @@ namespace PackageHandlerApp
         switch (selectedOption)
         {
           case "Add Package":
-            int id = totalPackageCount();
+            int id = departmentService.totalPackageCount();;
             Console.WriteLine("Please enter a weight...");
             var weight = Convert.ToDouble(Console.ReadLine());
             Console.WriteLine("Please enter a value...");
@@ -160,7 +102,7 @@ namespace PackageHandlerApp
               break;
             }
 
-            Console.WriteLine($"You processed {totalPackageCount()} packages today!");
+            Console.WriteLine($"You processed {departmentService.totalPackageCount()} packages today!");
             Console.WriteLine("Thanks for using our App! Have a nice day.");
             closeApp = true;
             break;
