@@ -35,52 +35,22 @@ namespace PackageHandlerApp
               Console.WriteLine("Your package requires insurance and processing is momentarily suspended.");
             }
             else {
-              if (packageToAdd.weight <= 1)
-              {
-                var mailDepartment = AvailableDepartments.Find(item => item.name == "Mail");
-                mailDepartment!.addPackageToDepartment(packageToAdd);
-                Console.WriteLine("Your package was added to the Mail department!");
-              } else if (packageToAdd.weight <= 10)
-              {
-                var regularDepartment = AvailableDepartments.Find(item => item.name == "Regular");
-                regularDepartment!.addPackageToDepartment(packageToAdd);
-                Console.WriteLine("Your package was added to the Regular department!");
-              } else
-              {
-                var heavyDepartment = AvailableDepartments.Find(item => item.name == "Heavy");
-                heavyDepartment!.addPackageToDepartment(packageToAdd);
-                Console.WriteLine("Your package was added to the Heavy department!");
-              }
+              departmentService.addPackageToDepartment(packageToAdd);
             }
             break;
           case "Process Insurance Holds":
             List<Package> insuranceHoldsProcessed = new List<Package>();
-            foreach (Package item in HoldListForInsurance)
+            foreach (Package packageOnHold in HoldListForInsurance)
             {
               Console.WriteLine
               (
-                $"Package with id: {item.id}, and weight: {item.weight} requires insurance. Please verify your user identity to confirm adding insurance."
+                $"Package with id: {packageOnHold.id}, and weight: {packageOnHold.weight} requires insurance. Please verify your user identity to confirm adding insurance."
               );
               string userNameInput = Console.ReadLine()!;
               if (userNameInput == systemUser)
               {
-                if (item.weight <= 1)
-                {
-                  var mailDepartment = AvailableDepartments.Find(item => item.name == "Mail");
-                  mailDepartment!.addPackageToDepartment(item);
-                  Console.WriteLine("Your package was added to the Mail department!");
-                } else if (item.weight <= 10)
-                {
-                  var regularDepartment = AvailableDepartments.Find(item => item.name == "Regular");
-                  regularDepartment!.addPackageToDepartment(item);
-                  Console.WriteLine("Your package was added to the Regular department!");
-                } else
-                {
-                  var heavyDepartment = AvailableDepartments.Find(item => item.name == "Heavy");
-                  heavyDepartment!.addPackageToDepartment(item);
-                  Console.WriteLine("Your package was added to the Heavy department!");
-                }
-                insuranceHoldsProcessed.Add(item);
+                departmentService.addPackageToDepartment(packageOnHold);
+                insuranceHoldsProcessed.Add(packageOnHold);
                 Console.WriteLine("Package has been processed!");
               }
               else
