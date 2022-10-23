@@ -26,6 +26,7 @@ namespace PackageHandlerApp
     public string name = "";
     public double maxHandledWeight { get; set; }
     public double valueRequiredForInsurnace { get; set; }
+    
   }
   class Program 
   {
@@ -35,6 +36,28 @@ namespace PackageHandlerApp
       bool closeApp = false;
       List<Package> Packages = new List<Package>();
       List<Package> HoldListForInsurance = new List<Package>();
+
+      List<Department> AvailableDepartments = new List<Department>()
+      {
+        new Department()
+        {
+          name = "Mail",
+          maxHandledWeight = 1,
+          valueRequiredForInsurnace = 1000,
+        },
+        new Department()
+        {
+          name = "Regular",
+          maxHandledWeight = 10,
+          valueRequiredForInsurnace = 1000,
+        },
+        new Department()
+        {
+          name = "Mail",
+          maxHandledWeight = double.PositiveInfinity,
+          valueRequiredForInsurnace = 1000,
+        },
+      };
 
       do
       {
