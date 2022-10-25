@@ -1,0 +1,55 @@
+Packaging App Reflection
+
+What I Learned
+- The basics and some "intermediate" useable of the C# syntax
+
+- A lot about the C# typing system (mostly more basics)
+
+- How to better implement Object Oriented Programming
+
+- Using Guid as a way to generate id's in C#
+
+
+What went well...
+- I built the entire project using C# which before this project was a language I knew virtually nothing about
+
+- The app works without bugs based on the testing and useage that I have done assuming the specifications that were given to me
+and also taking into account things the app is lacking like validation and error handling
+
+- The C# syntax fits my style of programing and I like that it is a bit more verbose but very clear about what you are wanting to do with it.
+I felt that I was about to understand and implement what I have learned this far quite clearly.
+
+- More strict OOP is not something that I have specifically worked with before however I felt that I did a decent job implement OOP.
+This included separating concerns and also the idea of having classes and methods handle only what it needed and knowing only what it needed to know.
+Also worked to keep files short and readable.
+
+- I felt that I was able to achieve a really nice refactoring after my initial foray into C# and just getting the program to work and run.
+I had to do a lot of testing and attempting to fix things to end at my final refactor. It took much longer than I would have liked, but I
+felt that for my first time through with the language I did a good job with it.
+
+- Was happy with how the code reads which I feel reflects naming conventions and standards that help the code to be accessible to anyone
+looking at the code for the first time or the first time in a long time.
+
+
+What could be improved...
+- Implementation of OOP
+
+- Better knowledge of C#/.Net design patterns and architecture standards
+
+- How to work with reference types vs value types
+
+- App needs validation and error handling
+
+- Unit tests
+
+- Keeping Main method / Program class clean
+
+- Finding the solution to the issue of keeping all of the references to services in the highlest level of the architecture.
+I am sure there is probably a solution for this -- ideally I would want to create something like a "store" in frontend terms instead of
+having to use return statements to pass data back and forth. With more time and experience I am sure that I could find a solution that exists to this problem.
+
+- Database connection and saving information. Obviously the basic applicaiton doesn't save any data or send any data anywhere.
+This would be the logical next step and also something that I would want to spend more time on to understand and implement properly.
+
+- A more robust frontend that actually uses a web browser or mobile app to process this information, provide authentication, valdiation,
+show errors, and allow a user to view processed data etc.
