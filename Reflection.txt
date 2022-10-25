@@ -1,6 +1,6 @@
 Packaging App Reflection
 
-What I Learned
+##What I Learned
 - The basics and some "intermediate" useable of the C# syntax
 
 - A lot about the C# typing system (mostly more basics)
@@ -10,7 +10,7 @@ What I Learned
 - Using Guid as a way to generate id's in C#
 
 
-What went well...
+##What went well...
 - I built the entire project using C# which before this project was a language I knew virtually nothing about
 
 - The app works without bugs based on the testing and useage that I have done assuming the specifications that were given to me
@@ -31,7 +31,7 @@ felt that for my first time through with the language I did a good job with it.
 looking at the code for the first time or the first time in a long time.
 
 
-What could be improved...
+##What could be improved...
 - Implementation of OOP
 
 - Better knowledge of C#/.Net design patterns and architecture standards
