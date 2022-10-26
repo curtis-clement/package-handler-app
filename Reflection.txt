@@ -32,6 +32,8 @@ looking at the code for the first time or the first time in a long time.
 
 
 ## What could be improved...
+- Add ability to add a Department
+
 - Implementation of OOP
 
 - Better knowledge of C#/.Net design patterns and architecture standards
