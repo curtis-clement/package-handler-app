@@ -1,7 +1,7 @@
 Packaging App Reflection
 
 ## What I Learned
-- The basics and some "intermediate" useable of the C# syntax
+- The basics and some "intermediate" useage of the C# syntax
 
 - A lot about the C# typing system (mostly more basics)
 
