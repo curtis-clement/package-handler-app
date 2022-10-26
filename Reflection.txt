@@ -17,9 +17,9 @@ Packaging App Reflection
 and also taking into account things the app is lacking like validation and error handling
 
 - The C# syntax fits my style of programing and I like that it is a bit more verbose but very clear about what you are wanting to do with it.
-I felt that I was about to understand and implement what I have learned this far quite clearly.
+I felt that I was able to understand and implement what I have learned this far quite clearly.
 
-- More strict OOP is not something that I have specifically worked with before however I felt that I did a decent job implement OOP.
+- More strict OOP is not something that I have specifically worked with before however I felt that I did a decent job implementing OOP.
 This included separating concerns and also the idea of having classes and methods handle only what it needed and knowing only what it needed to know.
 Also worked to keep files short and readable.
 
@@ -34,6 +34,8 @@ looking at the code for the first time or the first time in a long time.
 ## What could be improved...
 - Add ability to add a Department
 
+- Unit tests
+
 - Implementation of OOP
 
 - Better knowledge of C#/.Net design patterns and architecture standards
@@ -41,8 +43,6 @@ looking at the code for the first time or the first time in a long time.
 - How to work with reference types vs value types
 
 - App needs validation and error handling
-
-- Unit tests
 
 - Keeping Main method / Program class clean
 
